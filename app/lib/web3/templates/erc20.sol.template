@@ -1,0 +1,64 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract {{name}} is ERC20, ERC20Burnable, Ownable {
+    // Maximum supply of tokens (in wei)
+    uint256 public immutable maxSupply;
+    
+    constructor(
+        uint256 initialSupply,
+        uint256 _maxSupply
+    ) ERC20("{{name}}", "{{symbol}}") Ownable(msg.sender) {
+        maxSupply = _maxSupply * 10 ** decimals();
+        
+        // Initial mint to the deployer
+        _mint(msg.sender, initialSupply * 10 ** decimals());
+    }
+    
+    /**
+     * @notice Mints new tokens to the specified address
+     * @param to The address that will receive the minted tokens
+     * @param amount The amount of tokens to mint (in wei)
+     */
+    function mint(address to, uint256 amount) public onlyOwner {
+        require(totalSupply() + amount <= maxSupply, "Exceeds maximum supply");
+        _mint(to, amount);
+    }
+    
+    /**
+     * @notice Burns tokens from the sender's account
+     * @param amount The amount of tokens to burn (in wei)
+     */
+    function burn(uint256 amount) public override {
+        super.burn(amount);
+    }
+    
+    /**
+     * @notice Burns tokens from a specified account (requires approval)
+     * @param account The account to burn from
+     * @param amount The amount of tokens to burn (in wei)
+     */
+    function burnFrom(address account, uint256 amount) public override {
+        super.burnFrom(account, amount);
+    }
+    
+    /**
+     * @notice Returns the number of decimals used by the token
+     * @return uint8 The number of decimals (18 for this token)
+     */
+    function decimals() public pure override returns (uint8) {
+        return 18;
+    }
+    
+    /**
+     * @notice Returns the remaining tokens that can be minted
+     * @return uint256 The amount of tokens that can still be created
+     */
+    function remainingSupply() public view returns (uint256) {
+        return maxSupply - totalSupply();
+    }
+} 

@@ -1,0 +1,251 @@
+/* Color Tokens Light Theme */
+:root,
+:root[data-theme='light'] {
+  --rill-elements-borderColor: theme('colors.alpha.gray.10');
+  --rill-elements-borderColorActive: theme('colors.accent.600');
+
+  --rill-elements-bg-depth-1: theme('colors.white');
+  --rill-elements-bg-depth-2: theme('colors.gray.50');
+  --rill-elements-bg-depth-3: theme('colors.gray.200');
+  --rill-elements-bg-depth-4: theme('colors.alpha.gray.5');
+
+  --rill-elements-textPrimary: theme('colors.gray.950');
+  --rill-elements-textSecondary: theme('colors.gray.600');
+  --rill-elements-textTertiary: theme('colors.gray.500');
+
+  --rill-elements-code-background: theme('colors.gray.100');
+  --rill-elements-code-text: theme('colors.gray.950');
+
+  --rill-elements-button-primary-background: theme('colors.alpha.accent.10');
+  --rill-elements-button-primary-backgroundHover: theme('colors.alpha.accent.20');
+  --rill-elements-button-primary-text: theme('colors.accent.500');
+
+  --rill-elements-button-secondary-background: theme('colors.alpha.gray.5');
+  --rill-elements-button-secondary-backgroundHover: theme('colors.alpha.gray.10');
+  --rill-elements-button-secondary-text: theme('colors.gray.950');
+
+  --rill-elements-button-danger-background: theme('colors.alpha.red.10');
+  --rill-elements-button-danger-backgroundHover: theme('colors.alpha.red.20');
+  --rill-elements-button-danger-text: theme('colors.red.500');
+
+  --rill-elements-item-contentDefault: theme('colors.alpha.gray.50');
+  --rill-elements-item-contentActive: theme('colors.gray.950');
+  --rill-elements-item-contentAccent: theme('colors.accent.700');
+  --rill-elements-item-contentDanger: theme('colors.red.500');
+  --rill-elements-item-backgroundDefault: rgba(0, 0, 0, 0);
+  --rill-elements-item-backgroundActive: theme('colors.alpha.gray.5');
+  --rill-elements-item-backgroundAccent: theme('colors.alpha.accent.10');
+  --rill-elements-item-backgroundDanger: theme('colors.alpha.red.10');
+
+  --rill-elements-loader-background: theme('colors.alpha.gray.10');
+  --rill-elements-loader-progress: theme('colors.accent.500');
+
+  --rill-elements-artifacts-background: theme('colors.white');
+  --rill-elements-artifacts-backgroundHover: theme('colors.alpha.gray.2');
+  --rill-elements-artifacts-borderColor: var(--rill-elements-borderColor);
+  --rill-elements-artifacts-inlineCode-background: theme('colors.gray.100');
+  --rill-elements-artifacts-inlineCode-text: var(--rill-elements-textPrimary);
+
+  --rill-elements-actions-background: theme('colors.white');
+  --rill-elements-actions-code-background: theme('colors.gray.800');
+
+  --rill-elements-messages-background: theme('colors.gray.100');
+  --rill-elements-messages-linkColor: theme('colors.accent.500');
+  --rill-elements-messages-code-background: theme('colors.gray.800');
+  --rill-elements-messages-inlineCode-background: theme('colors.gray.200');
+  --rill-elements-messages-inlineCode-text: theme('colors.gray.800');
+
+  --rill-elements-icon-success: theme('colors.green.500');
+  --rill-elements-icon-error: theme('colors.red.500');
+  --rill-elements-icon-primary: theme('colors.gray.950');
+  --rill-elements-icon-secondary: theme('colors.gray.600');
+  --rill-elements-icon-tertiary: theme('colors.gray.500');
+
+  --rill-elements-dividerColor: theme('colors.gray.100');
+
+  --rill-elements-prompt-background: theme('colors.alpha.white.80');
+
+  --rill-elements-sidebar-dropdownShadow: theme('colors.alpha.gray.10');
+  --rill-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.accent.10');
+  --rill-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.accent.20');
+  --rill-elements-sidebar-buttonText: theme('colors.accent.700');
+
+  --rill-elements-preview-addressBar-background: theme('colors.gray.100');
+  --rill-elements-preview-addressBar-backgroundHover: theme('colors.alpha.gray.5');
+  --rill-elements-preview-addressBar-backgroundActive: theme('colors.white');
+  --rill-elements-preview-addressBar-text: var(--rill-elements-textSecondary);
+  --rill-elements-preview-addressBar-textActive: var(--rill-elements-textPrimary);
+
+  --rill-elements-terminals-background: theme('colors.white');
+  --rill-elements-terminals-buttonBackground: var(--rill-elements-bg-depth-4);
+
+  --rill-elements-cta-background: theme('colors.gray.100');
+  --rill-elements-cta-text: theme('colors.gray.950');
+
+  /* Terminal Colors */
+  --rill-terminal-background: var(--rill-elements-terminals-background);
+  --rill-terminal-foreground: #333333;
+  --rill-terminal-selection-background: #00000040;
+  --rill-terminal-black: #000000;
+  --rill-terminal-red: #cd3131;
+  --rill-terminal-green: #00bc00;
+  --rill-terminal-yellow: #949800;
+  --rill-terminal-blue: #0451a5;
+  --rill-terminal-magenta: #bc05bc;
+  --rill-terminal-cyan: #0598bc;
+  --rill-terminal-white: #555555;
+  --rill-terminal-brightBlack: #686868;
+  --rill-terminal-brightRed: #cd3131;
+  --rill-terminal-brightGreen: #00bc00;
+  --rill-terminal-brightYellow: #949800;
+  --rill-terminal-brightBlue: #0451a5;
+  --rill-terminal-brightMagenta: #bc05bc;
+  --rill-terminal-brightCyan: #0598bc;
+  --rill-terminal-brightWhite: #a5a5a5;
+}
+
+/* Color Tokens Dark Theme */
+:root,
+:root[data-theme='dark'] {
+  --rill-elements-borderColor: theme('colors.alpha.white.10');
+  --rill-elements-borderColorActive: theme('colors.accent.500');
+
+  --rill-elements-bg-depth-1: theme('colors.gray.950');
+  --rill-elements-bg-depth-2: theme('colors.gray.900');
+  --rill-elements-bg-depth-3: theme('colors.gray.800');
+  --rill-elements-bg-depth-4: theme('colors.alpha.white.5');
+
+  --rill-elements-textPrimary: theme('colors.white');
+  --rill-elements-textSecondary: theme('colors.gray.400');
+  --rill-elements-textTertiary: theme('colors.gray.500');
+
+  --rill-elements-code-background: theme('colors.gray.800');
+  --rill-elements-code-text: theme('colors.white');
+
+  --rill-elements-button-primary-background: theme('colors.alpha.accent.10');
+  --rill-elements-button-primary-backgroundHover: theme('colors.alpha.accent.20');
+  --rill-elements-button-primary-text: theme('colors.accent.500');
+
+  --rill-elements-button-secondary-background: theme('colors.alpha.white.5');
+  --rill-elements-button-secondary-backgroundHover: theme('colors.alpha.white.10');
+  --rill-elements-button-secondary-text: theme('colors.white');
+
+  --rill-elements-button-danger-background: theme('colors.alpha.red.10');
+  --rill-elements-button-danger-backgroundHover: theme('colors.alpha.red.20');
+  --rill-elements-button-danger-text: theme('colors.red.500');
+
+  --rill-elements-item-contentDefault: theme('colors.alpha.white.50');
+  --rill-elements-item-contentActive: theme('colors.white');
+  --rill-elements-item-contentAccent: theme('colors.accent.500');
+  --rill-elements-item-contentDanger: theme('colors.red.500');
+  --rill-elements-item-backgroundDefault: rgba(255, 255, 255, 0);
+  --rill-elements-item-backgroundActive: theme('colors.alpha.white.10');
+  --rill-elements-item-backgroundAccent: theme('colors.alpha.accent.10');
+  --rill-elements-item-backgroundDanger: theme('colors.alpha.red.10');
+
+  --rill-elements-loader-background: theme('colors.alpha.gray.10');
+  --rill-elements-loader-progress: theme('colors.accent.500');
+
+  --rill-elements-artifacts-background: theme('colors.gray.900');
+  --rill-elements-artifacts-backgroundHover: theme('colors.alpha.white.5');
+  --rill-elements-artifacts-borderColor: var(--rill-elements-borderColor);
+  --rill-elements-artifacts-inlineCode-background: theme('colors.gray.800');
+  --rill-elements-artifacts-inlineCode-text: theme('colors.white');
+
+  --rill-elements-actions-background: theme('colors.gray.900');
+  --rill-elements-actions-code-background: theme('colors.gray.800');
+
+  --rill-elements-messages-background: theme('colors.gray.800');
+  --rill-elements-messages-linkColor: theme('colors.accent.500');
+  --rill-elements-messages-code-background: theme('colors.gray.900');
+  --rill-elements-messages-inlineCode-background: theme('colors.gray.700');
+  --rill-elements-messages-inlineCode-text: var(--rill-elements-textPrimary);
+
+  --rill-elements-icon-success: theme('colors.green.400');
+  --rill-elements-icon-error: theme('colors.red.400');
+  --rill-elements-icon-primary: theme('colors.gray.950');
+  --rill-elements-icon-secondary: theme('colors.gray.600');
+  --rill-elements-icon-tertiary: theme('colors.gray.500');
+
+  --rill-elements-dividerColor: theme('colors.gray.100');
+
+  --rill-elements-prompt-background: theme('colors.alpha.gray.80');
+
+  --rill-elements-sidebar-dropdownShadow: theme('colors.alpha.gray.30');
+  --rill-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.accent.10');
+  --rill-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.accent.20');
+  --rill-elements-sidebar-buttonText: theme('colors.accent.500');
+
+  --rill-elements-preview-addressBar-background: var(--rill-elements-bg-depth-1);
+  --rill-elements-preview-addressBar-backgroundHover: theme('colors.alpha.white.5');
+  --rill-elements-preview-addressBar-backgroundActive: var(--rill-elements-bg-depth-1);
+  --rill-elements-preview-addressBar-text: var(--rill-elements-textSecondary);
+  --rill-elements-preview-addressBar-textActive: var(--rill-elements-textPrimary);
+
+  --rill-elements-terminals-background: var(--rill-elements-bg-depth-1);
+  --rill-elements-terminals-buttonBackground: var(--rill-elements-bg-depth-3);
+
+  --rill-elements-cta-background: theme('colors.alpha.white.10');
+  --rill-elements-cta-text: theme('colors.white');
+
+  /* Terminal Colors */
+  --rill-terminal-background: var(--rill-elements-terminals-background);
+  --rill-terminal-foreground: #eff0eb;
+  --rill-terminal-selection-background: #97979b33;
+  --rill-terminal-black: #000000;
+  --rill-terminal-red: #ff5c57;
+  --rill-terminal-green: #5af78e;
+  --rill-terminal-yellow: #f3f99d;
+  --rill-terminal-blue: #57c7ff;
+  --rill-terminal-magenta: #ff6ac1;
+  --rill-terminal-cyan: #9aedfe;
+  --rill-terminal-white: #f1f1f0;
+  --rill-terminal-brightBlack: #686868;
+  --rill-terminal-brightRed: #ff5c57;
+  --rill-terminal-brightGreen: #5af78e;
+  --rill-terminal-brightYellow: #f3f99d;
+  --rill-terminal-brightBlue: #57c7ff;
+  --rill-terminal-brightMagenta: #ff6ac1;
+  --rill-terminal-brightCyan: #9aedfe;
+  --rill-terminal-brightWhite: #f1f1f0;
+}
+
+/*
+ * Element Tokens
+ *
+ * Hierarchy: Element Token -> (Element Token | Color Tokens) -> Primitives
+ */
+:root {
+  --header-height: 54px;
+  --chat-max-width: 37rem;
+  --chat-min-width: 640px;
+  --workbench-width: min(calc(100% - var(--chat-min-width)), 1536px);
+  --workbench-inner-width: var(--workbench-width);
+  --workbench-left: calc(100% - var(--workbench-width));
+
+  /* Toasts */
+  --toastify-color-progress-success: var(--rill-elements-icon-success);
+  --toastify-color-progress-error: var(--rill-elements-icon-error);
+
+  /* Terminal */
+  --rill-elements-terminal-backgroundColor: var(--rill-terminal-background);
+  --rill-elements-terminal-textColor: var(--rill-terminal-foreground);
+  --rill-elements-terminal-cursorColor: var(--rill-terminal-foreground);
+  --rill-elements-terminal-selection-backgroundColor: var(--rill-terminal-selection-background);
+  --rill-elements-terminal-color-black: var(--rill-terminal-black);
+  --rill-elements-terminal-color-red: var(--rill-terminal-red);
+  --rill-elements-terminal-color-green: var(--rill-terminal-green);
+  --rill-elements-terminal-color-yellow: var(--rill-terminal-yellow);
+  --rill-elements-terminal-color-blue: var(--rill-terminal-blue);
+  --rill-elements-terminal-color-magenta: var(--rill-terminal-magenta);
+  --rill-elements-terminal-color-cyan: var(--rill-terminal-cyan);
+  --rill-elements-terminal-color-white: var(--rill-terminal-white);
+  --rill-elements-terminal-color-brightBlack: var(--rill-terminal-brightBlack);
+  --rill-elements-terminal-color-brightRed: var(--rill-terminal-brightRed);
+  --rill-elements-terminal-color-brightGreen: var(--rill-terminal-brightGreen);
+  --rill-elements-terminal-color-brightYellow: var(--rill-terminal-brightYellow);
+  --rill-elements-terminal-color-brightBlue: var(--rill-terminal-brightBlue);
+  --rill-elements-terminal-color-brightMagenta: var(--rill-terminal-brightMagenta);
+  --rill-elements-terminal-color-brightCyan: var(--rill-terminal-brightCyan);
+  --rill-elements-terminal-color-brightWhite: var(--rill-terminal-brightWhite);
+}
