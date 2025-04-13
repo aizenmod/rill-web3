@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import * as lighthouseStorage from './index';
 import { useWebContainer } from '~/lib/webcontainer/useWebContainer';
+import { useRepositoryDb } from '~/lib/repositories/useRepositoryDb';
 
 // Mark as client-only to avoid SSR issues
 export const clientOnly = true;
@@ -13,6 +14,7 @@ interface LighthouseButtonProps {
 export function LighthouseButton({ className = '' }: LighthouseButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const { webcontainer } = useWebContainer();
+  const { saveRepository } = useRepositoryDb();
   
   // check for API key
   console.log('Lighthouse API key status:', import.meta.env.VITE_LIGHTHOUSE_API_KEY ? 'Found' : 'Not found');
@@ -105,20 +107,63 @@ export function LighthouseButton({ className = '' }: LighthouseButtonProps) {
       // Upload to Lighthouse
       const response = await lighthouseStorage.storeCodeSnapshot(projectSnapshot, apiKey);
       
+      // Get project name from package.json if it exists
+      let projectName = 'Unnamed Project';
+      let projectDescription = '';
+      
+      try {
+        const packageJsonPath = '/package.json';
+        const packageJsonContent = await webcontainer.fs.readFile(packageJsonPath, 'utf-8');
+        const packageJson = JSON.parse(packageJsonContent);
+        
+        if (packageJson.name) {
+          projectName = packageJson.name;
+        }
+        
+        if (packageJson.description) {
+          projectDescription = packageJson.description;
+        }
+      } catch (error) {
+        console.log('No package.json found or unable to parse', error);
+      }
+      
+      // Save repository metadata to local database
+      try {
+        await saveRepository({
+          cid: response.data.Hash,
+          name: projectName,
+          description: projectDescription,
+          timestamp: new Date().toISOString(),
+          fileCount: successCount
+        });
+        
+        console.log('Repository metadata saved to local database');
+      } catch (error) {
+        console.error('Failed to save repository metadata:', error);
+      }
+      
       // Show success notification with the CID
       toast.success(
         <div>
           <p>Project saved to IPFS!</p>
           <p>CID: {response.data.Hash}</p>
           <p>Files saved: {successCount}</p>
-          <a 
-            href={`https://gateway.lighthouse.storage/ipfs/${response.data.Hash}`} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-blue-500 underline"
-          >
-            View on IPFS
-          </a>
+          <div className="flex mt-2 gap-2">
+            <a 
+              href={`https://gateway.lighthouse.storage/ipfs/${response.data.Hash}`} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-500 underline"
+            >
+              View on IPFS
+            </a>
+            <a 
+              href="/repositories" 
+              className="text-blue-500 underline"
+            >
+              View Repositories
+            </a>
+          </div>
         </div>,
         { autoClose: false }
       );

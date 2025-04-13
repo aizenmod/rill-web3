@@ -2,6 +2,7 @@ import { useWeb3 } from '~/lib/web3/Web3Context';
 import { WalletConnect } from './WalletConnect';
 import { NetworkStatus } from './NetworkStatus';
 import { LighthouseButton } from '~/lib/lighthouse/LighthouseButton';
+import { Link } from '@remix-run/react';
 
 interface Web3HeaderProps {
   className?: string;
@@ -18,6 +19,13 @@ export function Web3Header({ className = '' }: Web3HeaderProps) {
       {isConnected && (
         <>
           <NetworkStatus provider={provider} />
+          <Link
+            to="/repositories"
+            className="flex items-center gap-2 px-3 py-1.5 rounded text-sm font-medium bg-gray-100 hover:bg-gray-200 text-[var(--rill-text-primary)] transition-colors"
+          >
+            <div className="i-ph:folder-duotone text-lg"></div>
+            <span>Repositories</span>
+          </Link>
           <LighthouseButton />
         </>
       )}
