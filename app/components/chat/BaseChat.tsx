@@ -1,7 +1,7 @@
 import type { Message } from 'ai';
 import React, { type RefCallback } from 'react';
 import { ClientOnly } from 'remix-utils/client-only';
-import { Menu } from '~/components/sidebar/Menu.client';
+import Menu from '~/components/sidebar/Menu.client';
 import { IconButton } from '~/components/ui/IconButton';
 import { Workbench } from '~/components/workbench/Workbench.client';
 import { classNames } from '~/utils/classNames';
@@ -76,7 +76,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         ref={ref}
         className={classNames(
           styles.BaseChat,
-          'relative flex h-full w-full overflow-hidden bg-rill-elements-background-depth-1',
+          'relative flex h-full w-full overflow-hidden'
         )}
         data-chat-visible={showChat}
       >
@@ -84,11 +84,11 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         <div ref={scrollRef} className="flex overflow-y-auto w-full h-full">
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow min-w-[var(--chat-min-width)] h-full')}>
             {!chatStarted && (
-              <div id="intro" className="mt-[26vh] max-w-chat mx-auto">
-                <h1 className="text-5xl text-center font-bold text-rill-elements-textPrimary mb-2">
+              <div id="intro" className="mt-[26vh] max-w-chat mx-auto text-center">
+                <h1 className={classNames(styles.logoTitle, "text-5xl font-bold mb-3")}>
                   Rill
                 </h1>
-                <p className="mb-4 text-center text-rill-elements-textSecondary">
+                <p className="mb-6 text-[var(--rill-text-secondary)]">
                   Idea to web3 dApp in seconds.
                 </p>
               </div>
@@ -115,14 +115,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   'sticky bottom-0': chatStarted,
                 })}
               >
-                <div
-                  className={classNames(
-                    'shadow-sm border border-rill-elements-borderColor bg-rill-elements-prompt-background backdrop-filter backdrop-blur-[8px] rounded-lg overflow-hidden',
-                  )}
-                >
+                <div className={classNames(styles.chatInput)}>
                   <textarea
                     ref={textareaRef}
-                    className={`w-full pl-4 pt-4 pr-16 focus:outline-none resize-none text-md text-rill-elements-textPrimary placeholder-rill-elements-textTertiary bg-transparent`}
+                    className="w-full pl-4 pt-4 pr-16 focus:outline-none resize-none text-md text-[var(--rill-text-primary)] placeholder-[var(--rill-text-secondary)] bg-transparent"
                     onKeyDown={(event) => {
                       if (event.key === 'Enter') {
                         if (event.shiftKey) {
@@ -168,36 +164,36 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         disabled={input.length === 0 || enhancingPrompt || !isConnected}
                         className={classNames({
                           'opacity-100!': enhancingPrompt,
-                          'text-rill-elements-item-contentAccent! pr-1.5 enabled:hover:bg-rill-elements-item-backgroundAccent!':
+                          'text-[var(--rill-primary)]! pr-1.5 enabled:hover:bg-[rgba(255,82,82,0.1)]!':
                             promptEnhanced,
                         })}
                         onClick={() => enhancePrompt?.()}
                       >
                         {enhancingPrompt ? (
                           <>
-                            <div className="i-svg-spinners:90-ring-with-bg text-rill-elements-loader-progress text-xl"></div>
+                            <div className="i-svg-spinners:90-ring-with-bg text-[var(--rill-primary)] text-xl"></div>
                             <div className="ml-1.5">Enhancing prompt...</div>
                           </>
                         ) : (
                           <>
-                            <div className="i-rill:stars text-xl"></div>
+                            <div className="i-rill:stars text-xl text-[var(--rill-primary)]"></div>
                             {promptEnhanced && <div className="ml-1.5">Prompt enhanced</div>}
                           </>
                         )}
                       </IconButton>
                     </div>
                     {input.length > 3 ? (
-                      <div className="text-xs text-rill-elements-textTertiary">
+                      <div className="text-xs text-[var(--rill-text-secondary)]">
                         Use <kbd className="kdb">Shift</kbd> + <kbd className="kdb">Return</kbd> for a new line
                       </div>
                     ) : null}
                   </div>
                 </div>
-                <div className="bg-rill-elements-background-depth-1 pb-6">{/* Ghost Element */}</div>
+                <div className="pb-6">{/* Ghost Element */}</div>
               </div>
             </div>
             {!chatStarted && (
-              <div id="examples" className="relative w-full max-w-xl mx-auto mt-8 flex justify-center">
+              <div id="examples" className="relative w-full max-w-xl mx-auto mt-6 flex justify-center">
                 <div className="flex flex-col space-y-2 [mask-image:linear-gradient(to_bottom,black_0%,transparent_180%)] hover:[mask-image:none]">
                   {EXAMPLE_PROMPTS.map((examplePrompt, index) => {
                     return (
@@ -206,11 +202,14 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         onClick={(event) => {
                           handleSendMessage(event, examplePrompt.text);
                         }}
-                        className="group flex items-center w-full gap-2 justify-center bg-transparent text-rill-elements-textTertiary hover:text-rill-elements-textPrimary transition-theme"
+                        className={classNames(
+                          styles.examplePrompt,
+                          "group flex items-center w-full gap-2 justify-center text-[var(--rill-text-secondary)]"
+                        )}
                         disabled={!isConnected}
                       >
                         {examplePrompt.text}
-                        <div className="i-ph:arrow-bend-down-left" />
+                        <div className="i-ph:arrow-bend-down-left text-[var(--rill-primary)]" />
                       </button>
                     );
                   })}

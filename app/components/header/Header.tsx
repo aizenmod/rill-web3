@@ -12,30 +12,41 @@ export function Header() {
   return (
     <header
       className={classNames(
-        'flex items-center bg-rill-elements-background-depth-1 p-5 border-b h-[var(--header-height)]',
+        'bg-[var(--rill-transparent)] border-b h-[var(--header-height)] transition-all duration-300',
         {
           'border-transparent': !chat.started,
-          'border-rill-elements-borderColor': chat.started,
+          'border-[var(--rill-border-color)] shadow-sm': chat.started,
         },
       )}
     >
-      <div className="flex items-center gap-2 z-logo text-rill-elements-textPrimary cursor-pointer">
-        <div className="i-ph:sidebar-simple-duotone text-xl" />
-        <a href="/" className="text-2xl font-semibold text-accent flex items-center">
-          <span className="w-[46px] inline-block">Rill</span>
-        </a>
+      <div className=" h-full px-4 flex justify-between items-center">
+        {/* Logo section */}
+        <div className="flex items-center gap-3">
+          <div className="i-ph:sidebar-simple-duotone text-xl text-[var(--rill-primary)]" />
+          <a href="/" className="text-2xl font-semibold flex items-center">
+            <span className="w-[46px] inline-block bg-gradient-to-r from-[var(--rill-primary)] to-[var(--rill-primary-dark)] bg-clip-text text-transparent font-bold">
+              Rill
+            </span>
+          </a>
+        </div>
+        
+        {/* Center section - Chat description */}
+        <div className="max-w-xs w-full px-4 truncate text-center text-[var(--rill-text-primary)] font-medium">
+          <ClientOnly>{() => <ChatDescription />}</ClientOnly>
+        </div>
+        
+        {/* Right section - Actions */}
+        <div className="flex items-center">
+          <ClientOnly>
+            {() => (
+              <div className="flex items-center gap-4">
+                <Web3Header className="mr-2" />
+                {chat.started && <HeaderActionButtons />}
+              </div>
+            )}
+          </ClientOnly>
+        </div>
       </div>
-      <span className="flex-1 px-4 truncate text-center text-rill-elements-textPrimary">
-        <ClientOnly>{() => <ChatDescription />}</ClientOnly>
-      </span>
-      <ClientOnly>
-        {() => (
-          <div className="flex items-center gap-4">
-            <Web3Header />
-            {chat.started && <HeaderActionButtons />}
-          </div>
-        )}
-      </ClientOnly>
     </header>
   );
 }

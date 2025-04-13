@@ -1,4 +1,18 @@
+:root {
+  --rill-primary: #ff5252;
+  --rill-primary-dark: #c50e29;
+  --rill-primary-light: #ff867f;
+  --rill-background: #faf0f0;
+  --rill-text-primary: #333333;
+  --rill-text-secondary: #666666;
+  --rill-border-color: #f0d0d0;
+  --rill-prompt-bg: rgba(255, 240, 240, 0.8);
+  --rill-chat-min-width: 300px;
+}
+
 .BaseChat {
+  
+  
   &[data-chat-visible='false'] {
     --workbench-inner-width: 100%;
     --workbench-left: 0;
@@ -16,4 +30,37 @@
 
 .Chat {
   opacity: 1;
+}
+
+.chatInput {
+  border: 1px solid var(--rill-border-color);
+  border-radius: 12px;
+  background-color: var(--rill-prompt-bg);
+  backdrop-filter: blur(8px);
+  transition: border-color 0.2s ease;
+  box-shadow: 0 4px 12px rgba(197, 14, 41, 0.05);
+  
+  &:focus-within {
+    border-color: var(--rill-primary);
+    box-shadow: 0 4px 12px rgba(197, 14, 41, 0.1);
+  }
+}
+
+.examplePrompt {
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: transparent;
+  
+  &:hover {
+    background-color: rgba(255, 82, 82, 0.1);
+    color: var(--rill-primary-dark);
+  }
+}
+
+.logoTitle {
+  background: linear-gradient(90deg, var(--rill-primary) 0%, var(--rill-primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(197, 14, 41, 0.1);
 }

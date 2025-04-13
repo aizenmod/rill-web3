@@ -1,11 +1,30 @@
 import type { Message } from 'ai';
 import { createScopedLogger } from '~/utils/logger';
 import type { ChatHistoryItem } from './useChatHistory';
+import * as lighthouseStorage from '~/lib/lighthouse';
 
 const logger = createScopedLogger('ChatHistory');
+// Use Vite's environment variable format
+const LIGHTHOUSE_API_KEY = import.meta.env.VITE_LIGHTHOUSE_API_KEY || '';
+
+// This is a safe db instance that's only accessible on the client
+export let db: IDBDatabase | undefined = undefined;
+
+// Initialize db if in browser context
+if (typeof window !== 'undefined') {
+  openDatabase().then(database => {
+    db = database;
+  }).catch(error => {
+    logger.error('Failed to initialize IndexedDB', error);
+  });
+}
 
 // this is used at the top level and never rejects
 export async function openDatabase(): Promise<IDBDatabase | undefined> {
+  if (typeof window === 'undefined') {
+    return undefined;
+  }
+  
   return new Promise((resolve) => {
     const request = indexedDB.open('rillHistory', 1);
 
@@ -48,17 +67,38 @@ export async function setMessages(
   urlId?: string,
   description?: string,
 ): Promise<void> {
+  const chatItem = {
+    id,
+    messages,
+    urlId,
+    description,
+    timestamp: new Date().toISOString(),
+  };
+
+  // Store in IndexedDB
+  await storeInIndexedDB(db, chatItem);
+  
+  // Backup to Lighthouse if API key is available
+  if (LIGHTHOUSE_API_KEY) {
+    try {
+      // Initialize Lighthouse if needed
+      await lighthouseStorage.init(LIGHTHOUSE_API_KEY);
+      
+      // Store chat in Lighthouse
+      await lighthouseStorage.storeChat(chatItem, LIGHTHOUSE_API_KEY);
+    } catch (error) {
+      // Don't fail if Lighthouse backup fails
+      logger.error('Failed to backup chat to Lighthouse', error);
+    }
+  }
+}
+
+// Helper function to store chat in IndexedDB
+async function storeInIndexedDB(db: IDBDatabase, chatItem: any): Promise<void> {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction('chats', 'readwrite');
     const store = transaction.objectStore('chats');
-
-    const request = store.put({
-      id,
-      messages,
-      urlId,
-      description,
-      timestamp: new Date().toISOString(),
-    });
+    const request = store.put(chatItem);
 
     request.onsuccess = () => resolve();
     request.onerror = () => reject(request.error);

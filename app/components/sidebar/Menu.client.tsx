@@ -2,13 +2,16 @@ import { motion, type Variants } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Dialog, DialogButton, DialogDescription, DialogRoot, DialogTitle } from '~/components/ui/Dialog';
-import { IconButton } from '~/components/ui/IconButton';
 import { ThemeSwitch } from '~/components/ui/ThemeSwitch';
-import { db, deleteById, getAll, chatId, type ChatHistoryItem } from '~/lib/persistence';
+import { db, deleteById, getAll, chatId } from '~/lib/persistence';
+import type { ChatHistoryItem } from '~/lib/persistence/useChatHistory';
 import { cubicEasingFn } from '~/utils/easings';
 import { logger } from '~/utils/logger';
 import { HistoryItem } from './HistoryItem';
 import { binDates } from './date-binning';
+
+// Mark as client-only to avoid SSR issues
+export const clientOnly = true;
 
 const menuVariants = {
   closed: {
@@ -33,7 +36,8 @@ const menuVariants = {
 
 type DialogContent = { type: 'delete'; item: ChatHistoryItem } | null;
 
-export function Menu() {
+// Export as default for better compatibility with dynamic imports
+export default function Menu() {
   const menuRef = useRef<HTMLDivElement>(null);
   const [list, setList] = useState<ChatHistoryItem[]>([]);
   const [open, setOpen] = useState(false);
@@ -44,7 +48,11 @@ export function Menu() {
       getAll(db)
         .then((list) => list.filter((item) => item.urlId && item.description))
         .then(setList)
-        .catch((error) => toast.error(error.message));
+        .catch((error) => {
+          console.error('Failed to load chat history entries', error);
+          // Don't show error toast to avoid UX disruption
+          setList([]);
+        });
     }
   }, []);
 
@@ -62,11 +70,11 @@ export function Menu() {
           }
         })
         .catch((error) => {
+          console.error('Failed to delete conversation', error);
           toast.error('Failed to delete conversation');
-          logger.error(error);
         });
     }
-  }, []);
+  }, [loadEntries]);
 
   const closeDialog = () => {
     setDialogContent(null);
@@ -76,7 +84,7 @@ export function Menu() {
     if (open) {
       loadEntries();
     }
-  }, [open]);
+  }, [open, loadEntries]);
 
   useEffect(() => {
     const enterThreshold = 40;

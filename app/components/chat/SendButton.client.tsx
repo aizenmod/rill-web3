@@ -1,33 +1,31 @@
-import { AnimatePresence, cubicBezier, motion } from 'framer-motion';
+import { classNames } from '~/utils/classNames';
 
 interface SendButtonProps {
-  show: boolean;
+  show?: boolean;
   isStreaming?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick?: (event: React.UIEvent) => void;
 }
 
-const customEasingFn = cubicBezier(0.4, 0, 0.2, 1);
-
-export function SendButton({ show, isStreaming, onClick }: SendButtonProps) {
+export function SendButton({ show = false, isStreaming = false, onClick }: SendButtonProps) {
   return (
-    <AnimatePresence>
-      {show ? (
-        <motion.button
-          className="absolute flex justify-center items-center top-[18px] right-[22px] p-1 bg-accent-500 hover:brightness-94 color-white rounded-md w-[34px] h-[34px] transition-theme"
-          transition={{ ease: customEasingFn, duration: 0.17 }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          onClick={(event) => {
-            event.preventDefault();
-            onClick?.(event);
-          }}
-        >
-          <div className="text-lg">
-            {!isStreaming ? <div className="i-ph:arrow-right"></div> : <div className="i-ph:stop-circle-bold"></div>}
-          </div>
-        </motion.button>
-      ) : null}
-    </AnimatePresence>
+    <button
+      type="button"
+      aria-label={isStreaming ? 'Stop generating' : 'Send message'}
+      onClick={onClick}
+      className={classNames(
+        'absolute right-3 top-3 flex items-center justify-center transition-opacity duration-200',
+        'w-8 h-8 rounded-full text-white bg-[var(--rill-primary)] hover:bg-[var(--rill-primary-dark)]',
+        {
+          'opacity-0 pointer-events-none': !show,
+          'opacity-100': show,
+        },
+      )}
+    >
+      {isStreaming ? (
+        <div className="i-ph:stop-fill text-lg" />
+      ) : (
+        <div className="i-ph:paper-plane-right-fill text-lg" />
+      )}
+    </button>
   );
 }
