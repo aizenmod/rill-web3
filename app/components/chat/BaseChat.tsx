@@ -81,11 +81,11 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         data-chat-visible={showChat}
       >
         <ClientOnly>{() => <Menu />}</ClientOnly>
-        <div ref={scrollRef} className="flex overflow-y-auto w-full h-full">
+        <div ref={scrollRef} className="flex overflow-y-auto w-full h-full gap-4">
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow min-w-[var(--chat-min-width)] h-full')}>
             {!chatStarted && (
               <div id="intro" className="mt-[26vh] max-w-chat mx-auto text-center">
-                <h1 className={classNames(styles.logoTitle, "text-5xl font-bold mb-3")}>
+                <h1 className={classNames(styles.logoTitle, 'text-5xl font-bold mb-3')}>
                   Rill
                 </h1>
                 <p className="mb-6 text-[var(--rill-text-secondary)]">
@@ -103,7 +103,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   return chatStarted ? (
                     <Messages
                       ref={messageRef}
-                      className="flex flex-col w-full flex-1 max-w-chat px-4 pb-6 mx-auto z-1"
+                      className="flex flex-col w-full flex-1 max-h-[75vh] max-w-chat px-4 pb-6 mx-auto z-1"
                       messages={messages}
                       isStreaming={isStreaming}
                     />
@@ -111,7 +111,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 }}
               </ClientOnly>
               <div
-                className={classNames('relative w-full max-w-chat mx-auto z-prompt', {
+                className={classNames('relative w-full max-w-chat mx-auto z-prompt sticky bottom-0', {
                   'sticky bottom-0': chatStarted,
                 })}
               >
@@ -138,7 +138,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       minHeight: TEXTAREA_MIN_HEIGHT,
                       maxHeight: TEXTAREA_MAX_HEIGHT,
                     }}
-                    placeholder={isConnected ? "How can rill help you today?" : "Connect your wallet to get started"}
+                    placeholder={isConnected ? 'How can rill help you today?' : 'Connect your wallet to get started'}
                     translate="no"
                   />
                   <ClientOnly>
@@ -204,7 +204,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         }}
                         className={classNames(
                           styles.examplePrompt,
-                          "group flex items-center w-full gap-2 justify-center text-[var(--rill-text-secondary)]"
+                          'group flex items-center w-full gap-2 justify-center text-[var(--rill-text-secondary)]',
                         )}
                         disabled={!isConnected}
                       >

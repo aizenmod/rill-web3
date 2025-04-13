@@ -4,4 +4,6 @@ export const chatStore = map({
   started: false,
   aborted: false,
   showChat: true,
+  loading: false,
+  streaming: false,
 });

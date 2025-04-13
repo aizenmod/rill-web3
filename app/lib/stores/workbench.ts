@@ -271,6 +271,12 @@ export class WorkbenchStore {
     const artifacts = this.artifacts.get();
     return artifacts[id];
   }
+
+  forceWorkbenchDisplay() {
+    console.log('CRITICAL: FORCING WORKBENCH DISPLAY');
+    // Force show the workbench
+    this.showWorkbench.set(true);
+  }
 }
 
 export const workbenchStore = new WorkbenchStore();

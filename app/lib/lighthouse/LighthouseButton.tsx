@@ -135,7 +135,7 @@ export function LighthouseButton({ className = '' }: LighthouseButtonProps) {
     <button
       onClick={handleSaveToVault}
       disabled={isLoading}
-      className={`flex items-center gap-2 px-3 py-1.5 rounded text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white transition-colors ${className}`}
+      className={`flex items-center gap-2 px-3 py-1.5 rounded text-sm font-medium bg-[var(--rill-primary)] hover:bg-[var(--rill-primary)] text-white transition-colors ${className}`}
     >
       {isLoading ? (
         <>

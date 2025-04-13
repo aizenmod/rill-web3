@@ -63,7 +63,7 @@ const CollaborationSvg = () => (
   </svg>
 );
 
-export default function Index() {
+export default function Index({ chatStarted, chatId }: { chatStarted: boolean; chatId?: string }) {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -115,7 +115,7 @@ export default function Index() {
         </section>
         
         {/* Alternating Feature Sections */}
-        <section className="py-24 px-4">
+        <section className="py-24 px-4" style={{ display: chatStarted ? 'none' : 'block' }}>
           {/* Feature 1 - Image right */}
           <div className="max-w-6xl mx-auto mb-24">
             <div className="flex flex-col lg:flex-row items-center">
@@ -191,7 +191,7 @@ export default function Index() {
                 </ul>
               </div>
               <div className="lg:w-1/2">
-              <img 
+                <img 
                   src="/rill_pr2.webp" 
                   alt="One-Click Deployment" 
                   className="rounded-lg shadow-lg w-full"
@@ -233,7 +233,7 @@ export default function Index() {
                 </ul>
               </div>
               <div className="lg:w-1/2">
-              <img 
+                <img 
                   src="/rill_pr3.webp" 
                   alt="Decentralized Collaboration" 
                   className="rounded-lg shadow-lg w-full"
@@ -244,7 +244,7 @@ export default function Index() {
         </section>
         
         {/* How It Works Section with Gradient Transition */}
-        <section className="py-20 px-4 bg-gradient-to-b from-[var(--rill-primary)] to-black text-white">
+        <section className="py-20 px-4 bg-gradient-to-b from-[var(--rill-primary)] to-black text-white" style={{ display: chatStarted ? 'none' : 'block' }}>
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-16">How It Works</h2>
             
@@ -281,7 +281,7 @@ export default function Index() {
       </main>
       
       {/* Combined CTA and Footer section with shared background */}
-      <div className="relative bg-black">
+      <div className="relative bg-black" style={{ display: chatStarted ? 'none' : 'block' }}>
         {/* Shared background image */}
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-25 z-0"
