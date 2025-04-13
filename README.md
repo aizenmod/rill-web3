@@ -25,6 +25,10 @@ Building in Web3 is Complex, Slow, and Intimidating:
 
 ### The Solution - Introducing Rill
 
+![image](https://github.com/user-attachments/assets/4b488742-6220-4e5d-9b93-31b101f0e42c)
+
+![image](https://github.com/user-attachments/assets/03b51767-3145-43c0-9ea4-d968df790545)
+
 Rill transforms your natural language descriptions ('vibes') into deployed, usable Web3 applications (smart contracts + frontends).
 
 Rill empowers creators, developers, and businesses to:
