@@ -30,11 +30,11 @@ interface BaseChatProps {
 }
 
 const EXAMPLE_PROMPTS = [
-  { text: 'Build a todo app in React using Tailwind' },
-  { text: 'Build a simple blog using Astro' },
-  { text: 'Create a cookie consent form using Material UI' },
-  { text: 'Make a space invaders game' },
-  { text: 'How do I center a div?' },
+  { text: 'How do I connect to Ethereum using ethers.js?' },
+  { text: 'Create a simple NFT minting dApp with React' },
+  { text: 'Build a wallet connection component with Web3Modal' },
+  { text: 'How to interact with smart contracts using web3.js' },
+  { text: 'Implement token swapping with Uniswap SDK' },
 ];
 
 const TEXTAREA_MIN_HEIGHT = 76;

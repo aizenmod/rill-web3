@@ -2,7 +2,7 @@
 :root,
 :root[data-theme='light'] {
   --rill-elements-borderColor: theme('colors.alpha.gray.10');
-  --rill-elements-borderColorActive: theme('colors.accent.600');
+  --rill-elements-borderColorActive: theme('colors.red.600');
 
   --rill-elements-bg-depth-1: theme('colors.white');
   --rill-elements-bg-depth-2: theme('colors.gray.50');
@@ -16,9 +16,9 @@
   --rill-elements-code-background: theme('colors.gray.100');
   --rill-elements-code-text: theme('colors.gray.950');
 
-  --rill-elements-button-primary-background: theme('colors.alpha.accent.10');
-  --rill-elements-button-primary-backgroundHover: theme('colors.alpha.accent.20');
-  --rill-elements-button-primary-text: theme('colors.accent.500');
+  --rill-elements-button-primary-background: theme('colors.alpha.red.10');
+  --rill-elements-button-primary-backgroundHover: theme('colors.alpha.red.20');
+  --rill-elements-button-primary-text: theme('colors.red.500');
 
   --rill-elements-button-secondary-background: theme('colors.alpha.gray.5');
   --rill-elements-button-secondary-backgroundHover: theme('colors.alpha.gray.10');
@@ -30,15 +30,15 @@
 
   --rill-elements-item-contentDefault: theme('colors.alpha.gray.50');
   --rill-elements-item-contentActive: theme('colors.gray.950');
-  --rill-elements-item-contentAccent: theme('colors.accent.700');
+  --rill-elements-item-contentAccent: theme('colors.red.700');
   --rill-elements-item-contentDanger: theme('colors.red.500');
   --rill-elements-item-backgroundDefault: rgba(0, 0, 0, 0);
   --rill-elements-item-backgroundActive: theme('colors.alpha.gray.5');
-  --rill-elements-item-backgroundAccent: theme('colors.alpha.accent.10');
+  --rill-elements-item-backgroundAccent: theme('colors.alpha.red.10');
   --rill-elements-item-backgroundDanger: theme('colors.alpha.red.10');
 
   --rill-elements-loader-background: theme('colors.alpha.gray.10');
-  --rill-elements-loader-progress: theme('colors.accent.500');
+  --rill-elements-loader-progress: theme('colors.red.500');
 
   --rill-elements-artifacts-background: theme('colors.white');
   --rill-elements-artifacts-backgroundHover: theme('colors.alpha.gray.2');
@@ -50,7 +50,7 @@
   --rill-elements-actions-code-background: theme('colors.gray.800');
 
   --rill-elements-messages-background: theme('colors.gray.100');
-  --rill-elements-messages-linkColor: theme('colors.accent.500');
+  --rill-elements-messages-linkColor: theme('colors.red.500');
   --rill-elements-messages-code-background: theme('colors.gray.800');
   --rill-elements-messages-inlineCode-background: theme('colors.gray.200');
   --rill-elements-messages-inlineCode-text: theme('colors.gray.800');
@@ -66,9 +66,9 @@
   --rill-elements-prompt-background: theme('colors.alpha.white.80');
 
   --rill-elements-sidebar-dropdownShadow: theme('colors.alpha.gray.10');
-  --rill-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.accent.10');
-  --rill-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.accent.20');
-  --rill-elements-sidebar-buttonText: theme('colors.accent.700');
+  --rill-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.red.10');
+  --rill-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.red.20');
+  --rill-elements-sidebar-buttonText: theme('colors.red.700');
 
   --rill-elements-preview-addressBar-background: theme('colors.gray.100');
   --rill-elements-preview-addressBar-backgroundHover: theme('colors.alpha.gray.5');
@@ -108,7 +108,7 @@
 :root,
 :root[data-theme='dark'] {
   --rill-elements-borderColor: theme('colors.alpha.white.10');
-  --rill-elements-borderColorActive: theme('colors.accent.500');
+  --rill-elements-borderColorActive: theme('colors.red.500');
 
   --rill-elements-bg-depth-1: theme('colors.gray.950');
   --rill-elements-bg-depth-2: theme('colors.gray.900');
@@ -122,9 +122,9 @@
   --rill-elements-code-background: theme('colors.gray.800');
   --rill-elements-code-text: theme('colors.white');
 
-  --rill-elements-button-primary-background: theme('colors.alpha.accent.10');
-  --rill-elements-button-primary-backgroundHover: theme('colors.alpha.accent.20');
-  --rill-elements-button-primary-text: theme('colors.accent.500');
+  --rill-elements-button-primary-background: theme('colors.alpha.red.10');
+  --rill-elements-button-primary-backgroundHover: theme('colors.alpha.red.20');
+  --rill-elements-button-primary-text: theme('colors.red.500');
 
   --rill-elements-button-secondary-background: theme('colors.alpha.white.5');
   --rill-elements-button-secondary-backgroundHover: theme('colors.alpha.white.10');
@@ -136,15 +136,15 @@
 
   --rill-elements-item-contentDefault: theme('colors.alpha.white.50');
   --rill-elements-item-contentActive: theme('colors.white');
-  --rill-elements-item-contentAccent: theme('colors.accent.500');
+  --rill-elements-item-contentAccent: theme('colors.red.500');
   --rill-elements-item-contentDanger: theme('colors.red.500');
   --rill-elements-item-backgroundDefault: rgba(255, 255, 255, 0);
   --rill-elements-item-backgroundActive: theme('colors.alpha.white.10');
-  --rill-elements-item-backgroundAccent: theme('colors.alpha.accent.10');
+  --rill-elements-item-backgroundAccent: theme('colors.alpha.red.10');
   --rill-elements-item-backgroundDanger: theme('colors.alpha.red.10');
 
   --rill-elements-loader-background: theme('colors.alpha.gray.10');
-  --rill-elements-loader-progress: theme('colors.accent.500');
+  --rill-elements-loader-progress: theme('colors.red.500');
 
   --rill-elements-artifacts-background: theme('colors.gray.900');
   --rill-elements-artifacts-backgroundHover: theme('colors.alpha.white.5');
@@ -156,7 +156,7 @@
   --rill-elements-actions-code-background: theme('colors.gray.800');
 
   --rill-elements-messages-background: theme('colors.gray.800');
-  --rill-elements-messages-linkColor: theme('colors.accent.500');
+  --rill-elements-messages-linkColor: theme('colors.red.500');
   --rill-elements-messages-code-background: theme('colors.gray.900');
   --rill-elements-messages-inlineCode-background: theme('colors.gray.700');
   --rill-elements-messages-inlineCode-text: var(--rill-elements-textPrimary);
@@ -172,9 +172,9 @@
   --rill-elements-prompt-background: theme('colors.alpha.gray.80');
 
   --rill-elements-sidebar-dropdownShadow: theme('colors.alpha.gray.30');
-  --rill-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.accent.10');
-  --rill-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.accent.20');
-  --rill-elements-sidebar-buttonText: theme('colors.accent.500');
+  --rill-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.red.10');
+  --rill-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.red.20');
+  --rill-elements-sidebar-buttonText: theme('colors.red.500');
 
   --rill-elements-preview-addressBar-background: var(--rill-elements-bg-depth-1);
   --rill-elements-preview-addressBar-backgroundHover: theme('colors.alpha.white.5');

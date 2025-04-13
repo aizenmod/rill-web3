@@ -44,8 +44,23 @@ export function createWeb3Project(options: Web3ProjectOptions) {
   
   // Create project structure
   if (useHardhat) {
-    // Add hardhat configuration
-    const hardhatConfig = getTemplateContent('hardhat.config.js.template');
+    // Add hardhat configuration directly instead of using hardhat init
+    const hardhatConfig = `/** @type import('hardhat/config').HardhatUserConfig */
+module.exports = {
+  solidity: "0.8.20",
+  paths: {
+    artifacts: './artifacts',
+    cache: './cache',
+    sources: './contracts',
+    tests: './test',
+  },
+  networks: {
+    hardhat: {
+      chainId: 31337
+    }
+  }
+};`;
+
     files.push({
       path: path.join(projectName, 'hardhat.config.js'),
       content: hardhatConfig
@@ -63,12 +78,12 @@ export function createWeb3Project(options: Web3ProjectOptions) {
         node: 'hardhat node'
       },
       dependencies: {
-        '@openzeppelin/contracts': '^5.0.0'
+        '@openzeppelin/contracts': '^5.3.0'
       },
       devDependencies: {
-        hardhat: '^2.19.0',
+        hardhat: '^2.23.0',
         '@nomicfoundation/hardhat-toolbox': '^3.0.0',
-        'ethers': '^6.9.0'
+        'ethers': '^6.13.5'
       }
     };
     
@@ -186,11 +201,11 @@ main()
         preview: 'vite preview'
       },
       dependencies: {
-        'ethers': '^6.9.0',
+        'ethers': '^6.13.5',
         'react': '^18.2.0',
         'react-dom': '^18.2.0',
-        'viem': '^2.0.0',
-        'wagmi': '^1.4.12'
+        'viem': '^2.26.3',
+        'wagmi': '^2.14.16'
       },
       devDependencies: {
         '@types/react': '^18.2.15',
